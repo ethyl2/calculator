@@ -7,7 +7,7 @@
 }
 
 .calculator-box {
-  width: 30vw;
+  width: 15em;
   margin: 2em auto;
   border: 2px solid black;
   border-radius: 5px;
@@ -78,4 +78,18 @@
 .right-side div:hover,
 .zero-button:hover {
   background: #c3c2c2;
+}
+
+@media (max-width: 500px) {
+  .calculator-box {
+    width: 10em;
+  }
+
+  .digit-buttons div,
+  .right-side div,
+  .zero-button,
+  .clear-button {
+    margin: 0.25em;
+    padding: 0.25em;
+  }
 }

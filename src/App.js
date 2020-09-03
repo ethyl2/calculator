@@ -4,6 +4,14 @@ import './App.css';
 function App() {
   const [topDisplay, setTopDisplay] = useState(0);
 
+  const handleClear = () => {
+    setTopDisplay(0);
+  };
+
+  const handleClick = (e) => {
+    console.log(e.target.text);
+  };
+
   return (
     <div className="App">
       <h1>Calculator</h1>
@@ -11,8 +19,10 @@ function App() {
         <div className="top-display">{topDisplay}</div>
         <div className="buttons-area">
           <div className="left-side">
-            <div className="clear-button">C</div>
-            <div className="digit-buttons">
+            <div className="clear-button" onClick={handleClear}>
+              C
+            </div>
+            <div className="digit-buttons" onClick={handleClick}>
               <div>7</div>
               <div>8</div>
               <div>9</div>
