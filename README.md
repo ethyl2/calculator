@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Calculator Code Challenge
+
+Challenge is found here: https://scotch.io/bar-talk/code-challenge-2-build-a-calculator-with-css-grid
+
+It seems like the challenge is all about the css, and not the functionality of a calculator,
+but I'm currently working on implementing functionality, too.
+
+---
 
 ## Available Scripts
 
