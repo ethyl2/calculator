@@ -38,8 +38,14 @@ function App() {
       setOperator(e.target.id);
 
       if (currentOperator === 'add') {
-        console.log(`input ${input} + result ${result}`);
+        console.log(
+          `input ${input} + result ${result} = ${Number(input) + result}`
+        );
         setResult(Number(input) + result);
+        setInput(null);
+      } else if (currentOperator === 'subtract') {
+        // TODO: Fix bug when '-' is pressed mult times.
+        setResult(input);
         setInput(0);
       }
     } else {
@@ -47,6 +53,10 @@ function App() {
       if (operator === 'add') {
         console.log(`input ${input} + result ${result}`);
         setResult(Number(input) + result);
+        setInput(null);
+      } else if (operator === 'subtract') {
+        console.log(`result ${result} - input ${input}`);
+        setResult(result - Number(input));
         setInput(0);
       }
     }
