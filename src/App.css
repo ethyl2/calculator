@@ -1,38 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Space Mono', 'monospace';
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.calculator-box {
+  width: 30vw;
+  margin: 2em auto;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.top-display {
+  border-bottom: 2px solid black;
+  text-align: right;
+  padding: 0.75em 1em 0.75em 1em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.buttons-area {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  background: #ece9ea;
+  padding: 0.25em;
 }
 
-.App-link {
-  color: #61dafb;
+.right-side {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 1fr);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right-side div.equal-button {
+  background: #28d161;
+}
+
+.right-side div.equal-button:hover {
+  background: #2ef370;
+}
+
+.left-side {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+.clear-button {
+  background: #3473db;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.clear-button:hover {
+  background: #3a82f6;
+}
+
+.digit-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.digit-buttons div,
+.right-side div,
+.zero-button {
+  background: #767676;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.digit-buttons div:hover,
+.right-side div:hover,
+.zero-button:hover {
+  background: #c3c2c2;
 }
