@@ -47,6 +47,23 @@ function App() {
         // TODO: Fix bug when '-' is pressed mult times.
         setResult(input);
         setInput(0);
+      } else if (currentOperator === 'multiply') {
+        setResult((oldResult) => {
+          if (oldResult === 0) {
+            oldResult = 1;
+          }
+          let newInput = input;
+          if (input === 0 || input === null) {
+            newInput = 1;
+          }
+          console.log(
+            `input ${newInput} * result ${oldResult} = ${
+              Number(newInput) * oldResult
+            }`
+          );
+          return Number(newInput) * oldResult;
+        });
+        setInput(null);
       }
     } else {
       console.log('in calculate');
@@ -57,6 +74,9 @@ function App() {
       } else if (operator === 'subtract') {
         console.log(`result ${result} - input ${input}`);
         setResult(result - Number(input));
+        setInput(0);
+      } else if (operator === 'multiply') {
+        setResult(result * Number(input));
         setInput(0);
       }
     }
