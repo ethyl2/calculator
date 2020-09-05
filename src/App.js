@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [topDisplay, setTopDisplay] = useState(0);
+  const [history, setHistory] = useState('');
   const [result, setResult] = useState(0);
   const [input, setInput] = useState();
   const [operator, setOperator] = useState();
@@ -13,13 +14,19 @@ function App() {
 
   const handleClear = () => {
     setTopDisplay(0);
-    setResult(0);
-    setInput(0);
+    setResult(null);
+    setInput(null);
     setOperator(null);
+    setHistory('');
   };
 
   const handleClick = (e) => {
+    if (operator === 'calculate') {
+      console.log('previous operator was calculate');
+      setResult('');
+    }
     const currentNum = e.target.id;
+    setHistory((prevHistory) => prevHistory + currentNum.toString());
     if (!input) {
       setInput(currentNum);
       setTopDisplay(currentNum);
@@ -32,7 +39,40 @@ function App() {
   };
 
   const handleOperatorClick = (e) => {
+    const operators = {
+      add: '+',
+      subtract: '-',
+      multiply: '*',
+      divide: '/',
+      calculate: '=',
+    };
     const currentOperator = e.target.id;
+
+    if (!result) {
+      setResult(input);
+    } else {
+      console.log('operator: ', operator);
+      if (operator === 'add') {
+        console.log('in add');
+        setResult(Number(input) + Number(result));
+      }
+    }
+
+    if (currentOperator !== 'calculate') {
+      if (!history) {
+        setHistory(result + operators[currentOperator]);
+      } else {
+        setHistory((prevHistory) => prevHistory + operators[currentOperator]);
+      }
+    } else {
+      setHistory('');
+    }
+
+    // Calculate, then
+    setInput(null);
+    setOperator(currentOperator);
+
+    /*
     console.log(currentOperator);
     if (currentOperator !== 'calculate') {
       setOperator(e.target.id);
@@ -80,12 +120,16 @@ function App() {
         setInput(0);
       }
     }
+    */
   };
 
   return (
     <div className="App">
       <h1>Calculator</h1>
       <div className="calculator-box">
+        <div>input: {input}</div>
+        <div>result: {result}</div>
+        <div className="history-display">{history}</div>
         <div className="top-display">{topDisplay}</div>
         <div className="buttons-area">
           <div className="left-side">
