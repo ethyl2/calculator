@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import useDarkMode from './hooks/useDarkMode';
 import './App.css';
 
 function App() {
   const [topDisplay, setTopDisplay] = useState(0);
   const [history, setHistory] = useState('');
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState('');
   const [input, setInput] = useState();
   const [operator, setOperator] = useState();
+
+  const [useDark, setUseDark] = useDarkMode(false);
 
   useEffect(() => {
     setTopDisplay(result);
   }, [result]);
+
+  const toggleDark = (e) => {
+    e.preventDefault();
+    setUseDark(!useDark);
+  };
 
   const handleClear = () => {
     setTopDisplay(0);
@@ -89,7 +97,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Calculator</h1>
+      <button type="button" onClick={toggleDark}>
+        {useDark ? 'Light?' : 'Dark?'}
+      </button>
       <div className="calculator-box">
         <div>input: {input}</div>
         <div>result: {result}</div>

@@ -6,12 +6,38 @@
   box-sizing: border-box;
 }
 
+.dark-mode {
+  background: black;
+  color: white;
+}
+
+button {
+  font-family: 'Space Mono', 'monospace';
+  font-size: 1em;
+  background: #3473db;
+  color: white;
+  padding: 0.25em;
+  border-radius: 3px;
+  border: none;
+  margin-top: 0.5em;
+  margin-right: 1em;
+  float: right;
+}
+
+button:hover {
+  transform: scale(1.2);
+}
+
 .calculator-box {
   width: 15em;
   margin: 2em auto;
   border: 2px solid black;
   border-radius: 5px;
   font-size: 2em;
+}
+
+.dark-mode .calculator-box {
+  border: 2px solid #28d161;
 }
 
 .top-display {
@@ -27,6 +53,9 @@
   padding: 0.25em;
 }
 
+.dark-mode .buttons-area {
+  background: #1b1b1b;
+}
 .right-side {
   display: grid;
   grid-template-columns: 1fr;
