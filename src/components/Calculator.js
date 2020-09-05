@@ -21,7 +21,6 @@ export default function Calculator() {
 
   const handleClick = (e) => {
     if (operator === 'calculate') {
-      console.log('previous operator was calculate');
       setResult('');
     }
     const currentNum = e.target.id;
@@ -50,8 +49,6 @@ export default function Calculator() {
     if (!result) {
       setResult(input);
     } else {
-      console.log('operator: ', operator);
-
       if (operator === 'add') {
         setResult(Number(input) + Number(result));
       } else if (operator === 'subtract') {
@@ -76,7 +73,17 @@ export default function Calculator() {
       if (!history) {
         setHistory(result + operators[currentOperator]);
       } else {
-        setHistory((prevHistory) => prevHistory + operators[currentOperator]);
+        // If previous clicked-on item was an operator, take off that old operator before adding the new one.
+        if (Object.values(operators).includes(history[history.length - 1])) {
+          // Take off last item of history
+          console.log('need to take off last operator');
+          setHistory(
+            (prevHistory) =>
+              prevHistory.slice(0, -1) + operators[currentOperator]
+          );
+        } else {
+          setHistory((prevHistory) => prevHistory + operators[currentOperator]);
+        }
       }
     } else {
       setHistory('');
