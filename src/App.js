@@ -52,6 +52,7 @@ function App() {
       setResult(input);
     } else {
       console.log('operator: ', operator);
+
       if (operator === 'add') {
         setResult(Number(input) + Number(result));
       } else if (operator === 'subtract') {
@@ -59,7 +60,16 @@ function App() {
       } else if (operator === 'multiply') {
         setResult(Number(result) * Number(input));
       } else if (operator === 'divide') {
-        setResult(Number(result) / Number(input));
+        if (input !== '0') {
+          setResult(Number(result) / Number(input));
+        } else {
+          alert('No division by zero');
+          setTopDisplay(0);
+          setResult(null);
+          setInput(null);
+          setOperator(null);
+          setHistory('');
+        }
       }
     }
 
