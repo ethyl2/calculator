@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useDarkMode from './hooks/useDarkMode';
+import QuoteBox from './components/QuoteBox';
 import './App.css';
 
 function App() {
@@ -100,6 +101,9 @@ function App() {
       <button type="button" onClick={toggleDark}>
         {useDark ? 'Light?' : 'Dark?'}
       </button>
+
+      <QuoteBox />
+
       <div className="calculator-box">
         <div>input: {input}</div>
         <div>result: {result}</div>

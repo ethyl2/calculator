@@ -28,6 +28,9 @@ button:hover {
   transform: scale(1.2);
 }
 
+.quote-box {
+  padding: 1em 5em 0 1em;
+}
 .calculator-box {
   width: 15em;
   margin: 2em auto;
