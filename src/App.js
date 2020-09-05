@@ -53,8 +53,13 @@ function App() {
     } else {
       console.log('operator: ', operator);
       if (operator === 'add') {
-        console.log('in add');
         setResult(Number(input) + Number(result));
+      } else if (operator === 'subtract') {
+        setResult(Number(result) - Number(input));
+      } else if (operator === 'multiply') {
+        setResult(Number(result) * Number(input));
+      } else if (operator === 'divide') {
+        setResult(Number(result) / Number(input));
       }
     }
 
@@ -68,59 +73,8 @@ function App() {
       setHistory('');
     }
 
-    // Calculate, then
     setInput(null);
     setOperator(currentOperator);
-
-    /*
-    console.log(currentOperator);
-    if (currentOperator !== 'calculate') {
-      setOperator(e.target.id);
-
-      if (currentOperator === 'add') {
-        console.log(
-          `input ${input} + result ${result} = ${Number(input) + result}`
-        );
-        setResult(Number(input) + result);
-        setInput(null);
-      } else if (currentOperator === 'subtract') {
-        // TODO: Fix bug when '-' is pressed mult times.
-        setResult(input);
-        setInput(0);
-      } else if (currentOperator === 'multiply') {
-        setResult((oldResult) => {
-          if (oldResult === 0) {
-            oldResult = 1;
-          }
-          let newInput = input;
-          if (input === 0 || input === null) {
-            newInput = 1;
-          }
-          console.log(
-            `input ${newInput} * result ${oldResult} = ${
-              Number(newInput) * oldResult
-            }`
-          );
-          return Number(newInput) * oldResult;
-        });
-        setInput(null);
-      }
-    } else {
-      console.log('in calculate');
-      if (operator === 'add') {
-        console.log(`input ${input} + result ${result}`);
-        setResult(Number(input) + result);
-        setInput(null);
-      } else if (operator === 'subtract') {
-        console.log(`result ${result} - input ${input}`);
-        setResult(result - Number(input));
-        setInput(0);
-      } else if (operator === 'multiply') {
-        setResult(result * Number(input));
-        setInput(0);
-      }
-    }
-    */
   };
 
   return (
