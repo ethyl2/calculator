@@ -13,7 +13,7 @@ export default function Calculator() {
     if (!result) {
       setTopDisplay(input);
     }
-  }, [result, input]);
+  }, [result]);
 
   const handleClear = () => {
     setTopDisplay(0);

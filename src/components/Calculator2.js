@@ -13,7 +13,7 @@ export default function Calculator2() {
     if (!result) {
       setTopDisplay(input);
     }
-  }, [result, input]);
+  }, [result]);
 
   const handleClear = () => {
     setTopDisplay(0);
@@ -95,31 +95,30 @@ export default function Calculator2() {
   };
 
   const toggleNegative = () => {
-    console.log('in toggle Negative');
     if (input) {
       setInput(-Number(input));
-
-      let historyCopy = history;
+      setTopDisplay(-Number(input));
 
       let regex = /[\+\-\\\*]/g,
         result,
         indices = [];
-      while ((result = regex.exec(historyCopy))) {
+      while ((result = regex.exec(history))) {
         indices.push(result.index);
       }
-      console.log(indices);
-      console.log(indices[indices.length - 1]);
       const lastOperatorIndex = indices[indices.length - 1];
-      const leftHistory = historyCopy.slice(0, lastOperatorIndex + 1);
-      console.log(leftHistory);
+      const leftHistory = history.slice(0, lastOperatorIndex + 1);
+      const rightHistory = history.slice(lastOperatorIndex + 1, history.length);
+
       let newHistory = '';
       if (Number(input) > 0) {
+        // The input was originally greater than 0, so add the - sign in front of it now.
         newHistory = leftHistory + '-' + input.toString();
-        setHistory(newHistory);
       } else {
-        newHistory = leftHistory + input.toString();
+        // The input was originally less than 0, we exclude the - sign in front of the input in the history.
+        newHistory =
+          leftHistory.slice(0, leftHistory.length - 1) + rightHistory;
       }
-      console.log(newHistory);
+      setHistory(newHistory);
     } else {
       setResult(-Number(result));
     }
