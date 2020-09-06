@@ -2,12 +2,32 @@
 
 Challenge is found here: https://scotch.io/bar-talk/code-challenge-2-build-a-calculator-with-css-grid
 
-It seems like the challenge is all about the css, and not the functionality of a calculator,
-but I'm currently working on implementing functionality, too.
+The original challenge is to use CSS grid to create the layout of a calculator.
+
+Once I accomplished that, I added functionality to my calculator.
+
+## Additional Features
+
+- Besides basic addition, subtraction, multiplication, and division, my calculator also handles decimal points and toggling the postive/negative sign.
+
+- I added a dark mode option for the display, and the default display should correspond to a user's display preferences.
+
+- This app also displays quotes about mathematics. A random one is picked each time the app loads.
+
+- I improved the UX of the buttons: The buttons in the calculator are disabled when they should not be used and are displayed differently when that is the case. Also, their colors change when hovered over, and appear to move slightly when pressed.
 
 ---
 
-## Available Scripts
+## How to run this app locally:
+
+1. Fork and clone this repository.
+2. In terminal, run `npm i`.
+3. In terminal, run `npm start`.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+---
+
+## Other Available Scripts
 
 In the project directory, you can run:
 
