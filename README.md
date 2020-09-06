@@ -1,6 +1,10 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ea51207b-d7e6-4fdd-be63-9093b76738c4/deploy-status)](https://app.netlify.com/sites/heather-calculator/deploys)
+
 # Calculator Code Challenge
 
-Challenge is found here: https://scotch.io/bar-talk/code-challenge-2-build-a-calculator-with-css-grid
+## My Deployed Calculator: https://heather-calculator.netlify.app/
+
+The challenge is found here: https://scotch.io/bar-talk/code-challenge-2-build-a-calculator-with-css-grid
 
 The original challenge is to use CSS grid to create the layout of a calculator.
 
