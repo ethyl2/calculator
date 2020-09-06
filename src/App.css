@@ -182,6 +182,10 @@ button:hover {
 }
 
 @media (max-width: 500px) {
+  .App {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+  }
   .calculator-box {
     width: 10em;
   }
@@ -189,8 +193,34 @@ button:hover {
   .digit-buttons div,
   .right-side div,
   .zero-button,
-  .clear-button {
+  .clear-button,
+  .toggle-negative,
+  .decimal {
     margin: 0.25em;
     padding: 0.25em;
+  }
+
+  .top-buttons .decimal,
+  .top-buttons .clear-button,
+  .top-buttons .toggle-negative {
+    margin: 0.25em;
+    padding: 0.25em;
+  }
+
+  .top-buttons .toggle-negative {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .quote-box {
+    font-size: 0.7em;
+    padding: 1em 1em 0 1em;
+  }
+
+  button {
+    width: 30vw;
+    float: both;
+    margin: 1em auto;
   }
 }
