@@ -124,7 +124,7 @@ export default function Calculator2() {
       setInput(-Number(input));
       setTopDisplay(-Number(input));
 
-      let regex = /[\+\-\\\*]/g,
+      let regex = /[+\-\\*]/g,
         result,
         indices = [];
       while ((result = regex.exec(history))) {
@@ -151,8 +151,6 @@ export default function Calculator2() {
 
   return (
     <div className="calculator-box">
-      <div className="input-display">input: {input}</div>
-      <div className="input-display">result: {result}</div>
       <div className="history-display">{history}</div>
       <div className="top-display">{topDisplay}</div>
       <div className="buttons-area">

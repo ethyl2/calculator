@@ -47,8 +47,11 @@ button:hover {
 .top-display {
   border-bottom: 2px solid black;
   text-align: right;
-  padding: 0.75em 1em 0.75em 1em;
+  padding: 0.5em 1em 0.75em 1em;
   height: 1em;
+  font-size: 1.75em;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .input-display {
@@ -59,9 +62,20 @@ button:hover {
 .history-display {
   text-align: right;
   font-size: 0.8em;
-  height: 1em;
+  height: 1.75em;
   padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  overflow-y: hidden;
+  overflow-x: auto;
+  background: #ece9ea;
+  border-bottom: 2px solid black;
 }
+
+.dark-mode .history-display {
+  background: #1b1b1b;
+}
+
 .buttons-area {
   display: grid;
   grid-template-columns: 3fr 1fr;
