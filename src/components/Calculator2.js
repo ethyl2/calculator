@@ -9,6 +9,7 @@ export default function Calculator2() {
   const [prevWasOperator, setPrevWasOperator] = useState(true);
   const [justMadeFloat, setJustMadeFloat] = useState(false);
   const [allowDecimalPoint, setAllowDecimalPoint] = useState(true);
+  const [allowSignToggle, setAllowSignToggle] = useState(false);
 
   useEffect(() => {
     setTopDisplay(result);
@@ -24,10 +25,13 @@ export default function Calculator2() {
     setOperator(null);
     setHistory('');
     setPrevWasOperator(true);
+    setAllowSignToggle(false);
+    setAllowDecimalPoint(true);
   };
 
   const handleClick = (e) => {
     setPrevWasOperator(false);
+    setAllowSignToggle(true);
     const currentNum = e.target.id;
 
     if (operator === 'calculate') {
@@ -157,7 +161,14 @@ export default function Calculator2() {
             <div className="clear-button" onClick={handleClear}>
               C
             </div>
-            <div className="toggle-negative" onClick={toggleNegative}>
+            <div
+              onClick={(e) => allowSignToggle && toggleNegative(e)}
+              className={
+                allowSignToggle
+                  ? 'toggle-negative enabled'
+                  : 'toggle-negative disabled'
+              }
+            >
               +/-
             </div>
             <div
