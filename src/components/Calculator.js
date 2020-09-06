@@ -102,8 +102,8 @@ export default function Calculator() {
 
   return (
     <div className="calculator-box">
-      <div>input: {input}</div>
-      <div>result: {result}</div>
+      <div className="input-display">input: {input}</div>
+      <div className="input-display">result: {result}</div>
       <div className="history-display">{history}</div>
       <div className="top-display">{topDisplay}</div>
       <div className="buttons-area">
@@ -130,21 +130,21 @@ export default function Calculator() {
         <div className="right-side">
           <div
             id="divide"
-            onClick={handleOperatorClick}
+            onClick={(e) => !prevWasOperator && handleOperatorClick(e)}
             className={prevWasOperator ? 'disabled' : 'enabled'}
           >
             ÷
           </div>
           <div
             id="multiply"
-            onClick={handleOperatorClick}
+            onClick={(e) => !prevWasOperator && handleOperatorClick(e)}
             className={prevWasOperator ? 'disabled' : 'enabled'}
           >
             x
           </div>
           <div
             id="subtract"
-            onClick={handleOperatorClick}
+            onClick={(e) => !prevWasOperator && handleOperatorClick(e)}
             className={prevWasOperator ? 'disabled' : 'enabled'}
           >
             -

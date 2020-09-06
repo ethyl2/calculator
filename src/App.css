@@ -33,10 +33,10 @@ button:hover {
 }
 .calculator-box {
   width: 15em;
-  margin: 2em auto;
+  margin: 1em auto;
   border: 2px solid black;
   border-radius: 5px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .dark-mode .calculator-box {
@@ -47,8 +47,20 @@ button:hover {
   border-bottom: 2px solid black;
   text-align: right;
   padding: 0.75em 1em 0.75em 1em;
+  height: 1em;
 }
 
+.input-display {
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.history-display {
+  text-align: right;
+  font-size: 0.8em;
+  height: 1em;
+  padding-right: 1em;
+}
 .buttons-area {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -73,7 +85,7 @@ button:hover {
 }
 
 .disabled {
-  color: red;
+  color: rgb(241, 8, 105);
   pointer-events: none;
   opacity: 0.5;
 }
