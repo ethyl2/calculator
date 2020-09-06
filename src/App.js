@@ -1,6 +1,7 @@
 import React from 'react';
 import useDarkMode from './hooks/useDarkMode';
 import Calculator from './components/Calculator';
+import Calculator2 from './components/Calculator2';
 import QuoteBox from './components/QuoteBox';
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
       </button>
 
       <QuoteBox />
+      <Calculator2 />
       <Calculator />
     </div>
   );
