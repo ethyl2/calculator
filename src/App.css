@@ -111,11 +111,10 @@ button:hover {
 
 .top-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.clear-button,
-.toggle-negative {
+.top-buttons div {
   background: #3473db;
   margin: 0.5em;
   padding: 0.5em 1em;
@@ -124,13 +123,17 @@ button:hover {
   transition: all 0.2s ease-in-out;
 }
 
-.clear-button:hover,
-.toggle-negative:hover {
-  background: #3a82f6;
+.top-buttons .toggle-negative {
+  padding: 0.5em 0.25em;
+}
+
+.top-buttons div:hover {
+  background: #508ff6;
 }
 
 .clear-button:active,
-.toggle-negative:hover {
+.toggle-negative:active,
+.decimal:active {
   transform: translateY(0.1em);
   background: #034bc0;
 }

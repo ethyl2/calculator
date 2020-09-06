@@ -7,6 +7,8 @@ export default function Calculator2() {
   const [input, setInput] = useState();
   const [operator, setOperator] = useState();
   const [prevWasOperator, setPrevWasOperator] = useState(true);
+  const [justMadeFloat, setJustMadeFloat] = useState(false);
+  const [allowDecimalPoint, setAllowDecimalPoint] = useState(true);
 
   useEffect(() => {
     setTopDisplay(result);
@@ -37,14 +39,33 @@ export default function Calculator2() {
       setInput(currentNum);
       setTopDisplay(currentNum);
     } else {
-      const numString = input.toString() + currentNum.toString();
-      const newNum = Number(numString);
-      setInput(newNum);
-      setTopDisplay(newNum);
+      // Special handling when the 'current Num' is the decimal point.
+      if (currentNum === '.') {
+        setInput(Number(input).toFixed(1).toString());
+        setTopDisplay(Number(input).toFixed(1).toString());
+        setJustMadeFloat(true);
+        setAllowDecimalPoint(false);
+      } else {
+        let newNum = 0;
+        if (!Number.isInteger(input) && justMadeFloat) {
+          // Get rid of the 0 to the right of the decimal before adding the new digit
+          // When first adding a digit after converting the input to a float.
+          const numString =
+            Number(input).toFixed(0).toString() + '.' + currentNum.toString();
+          newNum = Number(numString);
+          setJustMadeFloat(false);
+        } else {
+          const numString = input.toString() + currentNum.toString();
+          newNum = Number(numString);
+        }
+        setInput(newNum);
+        setTopDisplay(newNum);
+      }
     }
   };
 
   const handleOperatorClick = (e) => {
+    setAllowDecimalPoint(true);
     const operators = {
       add: '+',
       subtract: '-',
@@ -138,6 +159,15 @@ export default function Calculator2() {
             </div>
             <div className="toggle-negative" onClick={toggleNegative}>
               +/-
+            </div>
+            <div
+              className={
+                allowDecimalPoint ? 'decimal enabled' : 'decimal disabled'
+              }
+              onClick={(e) => allowDecimalPoint && handleClick(e)}
+              id="."
+            >
+              .
             </div>
           </div>
           <div className="digit-buttons" onClick={handleClick}>
