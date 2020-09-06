@@ -6,6 +6,7 @@ export default function Calculator() {
   const [result, setResult] = useState('');
   const [input, setInput] = useState();
   const [operator, setOperator] = useState();
+  const [prevWasOperator, setPrevWasOperator] = useState(true);
 
   useEffect(() => {
     setTopDisplay(result);
@@ -17,9 +18,11 @@ export default function Calculator() {
     setInput(null);
     setOperator(null);
     setHistory('');
+    setPrevWasOperator(true);
   };
 
   const handleClick = (e) => {
+    setPrevWasOperator(false);
     if (operator === 'calculate') {
       setResult('');
     }
@@ -36,7 +39,20 @@ export default function Calculator() {
     }
   };
 
+  /*
+ // If previous clicked-on item was an operator, take off that old operator before adding the new one.
+        if (Object.values(operators).includes(history[history.length - 1])) {
+          // Take off last item of history
+          console.log('need to take off last operator');
+          setHistory(
+            (prevHistory) =>
+              prevHistory.slice(0, -1) + operators[currentOperator]
+          );
+        } else {
+  */
+
   const handleOperatorClick = (e) => {
+    console.log('clicked on ', e.target.id);
     const operators = {
       add: '+',
       subtract: '-',
@@ -70,20 +86,11 @@ export default function Calculator() {
     }
 
     if (currentOperator !== 'calculate') {
+      setPrevWasOperator(true);
       if (!history) {
         setHistory(result + operators[currentOperator]);
       } else {
-        // If previous clicked-on item was an operator, take off that old operator before adding the new one.
-        if (Object.values(operators).includes(history[history.length - 1])) {
-          // Take off last item of history
-          console.log('need to take off last operator');
-          setHistory(
-            (prevHistory) =>
-              prevHistory.slice(0, -1) + operators[currentOperator]
-          );
-        } else {
-          setHistory((prevHistory) => prevHistory + operators[currentOperator]);
-        }
+        setHistory((prevHistory) => prevHistory + operators[currentOperator]);
       }
     } else {
       setHistory('');
@@ -120,12 +127,40 @@ export default function Calculator() {
           </div>
         </div>
 
-        <div className="right-side" onClick={handleOperatorClick}>
-          <div id="divide">÷</div>
-          <div id="multiply">x</div>
-          <div id="subtract">-</div>
-          <div id="add">+</div>
-          <div id="calculate" className="equal-button">
+        <div className="right-side">
+          <div
+            id="divide"
+            onClick={handleOperatorClick}
+            className={prevWasOperator ? 'disabled' : 'enabled'}
+          >
+            ÷
+          </div>
+          <div
+            id="multiply"
+            onClick={handleOperatorClick}
+            className={prevWasOperator ? 'disabled' : 'enabled'}
+          >
+            x
+          </div>
+          <div
+            id="subtract"
+            onClick={handleOperatorClick}
+            className={prevWasOperator ? 'disabled' : 'enabled'}
+          >
+            -
+          </div>
+          <div
+            id="add"
+            onClick={(e) => !prevWasOperator && handleOperatorClick(e)}
+            className={prevWasOperator ? 'disabled' : 'enabled'}
+          >
+            +
+          </div>
+          <div
+            id="calculate"
+            onClick={handleOperatorClick}
+            className="equal-button"
+          >
             =
           </div>
         </div>

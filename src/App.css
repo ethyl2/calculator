@@ -54,6 +54,7 @@ button:hover {
   grid-template-columns: 3fr 1fr;
   background: #ece9ea;
   padding: 0.25em;
+  font-weight: bold;
 }
 
 .dark-mode .buttons-area {
@@ -63,6 +64,18 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, 1fr);
+}
+
+.enabled {
+  color: #28d161;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.disabled {
+  color: red;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .right-side div.equal-button {
