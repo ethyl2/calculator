@@ -10,7 +10,10 @@ export default function Calculator() {
 
   useEffect(() => {
     setTopDisplay(result);
-  }, [result]);
+    if (!result) {
+      setTopDisplay(input);
+    }
+  }, [result, input]);
 
   const handleClear = () => {
     setTopDisplay(0);
@@ -23,10 +26,11 @@ export default function Calculator() {
 
   const handleClick = (e) => {
     setPrevWasOperator(false);
+    const currentNum = e.target.id;
+
     if (operator === 'calculate') {
       setResult('');
     }
-    const currentNum = e.target.id;
 
     setHistory((prevHistory) => prevHistory + currentNum.toString());
     if (!input) {
@@ -69,6 +73,7 @@ export default function Calculator() {
           setInput(null);
           setOperator(null);
           setHistory('');
+          setPrevWasOperator(true);
         }
       }
     }
